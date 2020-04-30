@@ -4,6 +4,8 @@ const userModel = require('@models/userModel');
 const { userValidations } = require('@validations/userValidations');
 // import base controller
 const BaseController = require('@core.controller');
+// import configs
+const userConfig = require('@config/config').userConfig;
 
 class UserController extends BaseController {
 
@@ -13,24 +15,25 @@ class UserController extends BaseController {
     console.log('UserController created.');
   }
 
-  checkToken(token) {
-    if (token === 'ABCD') {
+  checkToken(accessToken) {
+    if (userConfig.accessToken === accessToken) {
       return true;
     }
 
     return false;
   }
 
-  async afterValidation(req, res, method, params, validateResult, response) {
-    if (params.access_token) {
-      /* Check access_token if it's required */
-      if (this.checkToken(params.access_token)) {
+  async afterValidation(req, res, method, params, validateResult, response, additionalParams) {
+    /* Check access_token if it's required */
+    if (params.accessToken) {
+      if (this.checkToken(params.accessToken)) {
+        additionalParams['user'] = { 'name': 'WinniPoh' };
         return true;
       }
 
       response({
         errorCode: 100,
-        errorMessage: ['access_token'],
+        errorMessage: ['accessToken'],
       });
       return false;
     }

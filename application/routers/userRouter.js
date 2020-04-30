@@ -5,7 +5,11 @@ const userController = require('@controllers/userController');
 
 const userRouter = (req, res) => {
   switch (req.params.method) {
-    case 'auth': {
+    case 'auth':
+    case 'startTest':
+    case 'tick':
+    case 'getTest':
+    case 'finishTest': {
       userController.handle(req, res, req.params.method);
       break;
     }

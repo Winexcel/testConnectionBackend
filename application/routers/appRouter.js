@@ -10,10 +10,6 @@ module.exports = (app) => {
   try {
     app.all('/user.:method', userRouter);
 
-    app.get('/getInstanceId', (req, res) => {
-      res.end(`INSTANCE_ID: ${process.env.INSTANCE_ID}`);
-    });
-
     // for dev routers
     app.all('//user.:method', userRouter);
 

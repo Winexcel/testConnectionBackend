@@ -1,9 +1,0 @@
-DROP EVENT IF EXISTS clearWeeklyUsersLikes;
-DELIMITER |
-CREATE EVENT clearWeeklyUsersLikes ON SCHEDULE
-    EVERY 1 WEEK
-    STARTS CURRENT_TIMESTAMP
-    DO BEGIN
-    UPDATE users SET weekly_users_likes = 1;
-END |
-DELIMITER ;

@@ -46,7 +46,7 @@ const errors = {
   },
 
   118: {
-    error_msg: 'Invalid launch parameters',
+    error_msg: 'Invalid login or password',
   },
 
   119: {
@@ -72,6 +72,10 @@ const errors = {
   124: {
     error_msg: 'Access denied',
   },
+
+  125: {
+
+  }
 };
 
 module.exports = errors;
