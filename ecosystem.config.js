@@ -8,7 +8,7 @@ module.exports = {
     error_file:"/var/www/eltexTest.ru/api/logs/error.log",
     log_date_format:"YYYY-MM-DD HH:mm",
 	
-	instances: "max",
+	instances: "1",
 	instance_var: 'INSTANCE_ID', //so you can get the number of node instance by this command in node.js - process.env.INSTANCE_ID
 	exec_mode : "cluster",
 	
